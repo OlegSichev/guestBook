@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Guestbook</title>
+</head>
+<body>
+<h2>Guestbook</h2>
+<form th:action="@{/}" method="post">
+    <input type="text" name="username" placeholder="Your Name"/>
+    <textarea name="message" placeholder="Your Message"></textarea>
+    <button type="submit">Post</button>
+</form>
+<div th:each="entry : ${entries}">
+    <div>
+        <h3 th:text="${entry.username}">Name</h3>
+        <p th:text="${entry.message}">Message</p>
+        <p th:text="${#dates.format(entry.postedDate, 'dd-MM-yyyy HH:mm:ss')}">Date</p>
+    </div>
+</div>
+</body>
+</html>
